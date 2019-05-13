@@ -3,6 +3,13 @@ session_start();
 
 require_once('includes/db-functions.php');
 
+$page = (!isset($_GET['page'])) ? 'connexion' : $_GET['page'];
+
+if($page == 'connexion' && isset($_SESSION['email']) && isset($_SESSION['password_hash'])) {
+    header('Location: index.php?page=dashboard');
+}
+
+
 if(isset($_GET['action']) && $_GET['action'] == 'register' && isset($_POST['submit-register'])) {
 
     if(empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm-password'])) {
@@ -53,8 +60,6 @@ if(isset($_POST['submit-loggin'])) {
     }
 }
 
-
-$page = (!isset($_GET['page'])) ? 'connexion' : $_GET['page'];
 ?>
 <!doctype html>
 <html lang="fr">
