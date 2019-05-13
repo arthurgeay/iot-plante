@@ -1,0 +1,1 @@
+<h2 class="mt-4 text-center">Tableau de bord</h2>
