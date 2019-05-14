@@ -67,12 +67,7 @@ CREATE TABLE `measures` (
   `date_measures` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `measures`
---
 
-INSERT INTO `measures` (`id_measures`, `temperature_measures`, `brightness_measures`, `humidity_measures`, `user_id`, `flower_id`, `date_measures`) VALUES
-(7, 20, 100, 50, 1, 1, '2019-05-14 23:47:29');
 
 -- --------------------------------------------------------
 
@@ -85,13 +80,6 @@ CREATE TABLE `user` (
   `email_user` varchar(100) NOT NULL,
   `password_user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `user`
---
-
-INSERT INTO `user` (`id_user`, `email_user`, `password_user`) VALUES
-(1, 'test@gmail.com', '$2y$10$6z6LLcRJyBo1Y4AwlEhvGecuQcK8kYcPcihlDuAvCX/LhI.lGludi');
 
 --
 -- Index pour les tables exportées
