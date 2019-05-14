@@ -37,4 +37,11 @@ function getDataFlower() {
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 
+function deleteMeasures() {
+    $db = dbConnect();
+    $req = $db->exec('DELETE FROM measures');
+
+    return $req;
+}
+
 
