@@ -9,9 +9,16 @@ switch($page) {
     case 'connexion':
         require_once('includes/_treatment-log-register.php');
         break;
+    case 'logout':
+        require_once('includes/_treatment-logout.php');
+        break;
     case 'dashboard':
         require_once('includes/_treatment-dashboard.php');
         break;
+    case 'plant':
+        require_once('includes/_treatment-plant-flower.php');
+        break;
+
 }
 
 ?>
@@ -42,7 +49,7 @@ switch($page) {
                     require_once('includes/_dashboard.php');
                     break;
                 case 'plant':
-                    echo 'ok';
+                    require_once('includes/_plant-flower.php');
                     break;
             }
         ?>

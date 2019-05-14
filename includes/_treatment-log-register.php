@@ -55,7 +55,7 @@ if(isset($_POST['submit-loggin'])) {
     if(!isset($_SESSION['errors']) && $emailExist && $passwordIsEquals) {
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['password_hash'] = $emailExist['password_user'];
-        $_SESSION['id'] = $emailExist['id_user'];
+        //$_SESSION['id'] = $emailExist['id_user'];
 
         header('Location: index.php?page=dashboard');
         exit();
