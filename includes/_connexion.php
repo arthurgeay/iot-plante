@@ -33,5 +33,10 @@ unset($_SESSION['success']);
         </div>
     <?php endif; ?>
     <input class="btn btn-block btn-primary" type="submit" value="Valider" name="<?= $name; ?>" />
-    <a href="index.php?action=register">Vous n'avez pas de compte ?</a>
+
+    <?php if(isset($_GET['action']) == 'register'): ?>
+        <a href="index.php">Se connecter</a>
+    <?php else: ?>
+        <a href="index.php?action=register">Vous n'avez pas de compte ?</a>
+    <?php endif; ?>
 </form>

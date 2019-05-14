@@ -30,4 +30,11 @@ function addUser($email, $password) {
     $req->execute();
 }
 
+function getDataFlower() {
+    $db = dbConnect();
+    $req = $db->query('SELECT * FROM measures AS m INNER JOIN flower AS f ON f.id_flower = m.flower_id ORDER BY m.date_measures DESC ');
+
+    return $req->fetch(PDO::FETCH_ASSOC);
+}
+
 

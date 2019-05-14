@@ -1,10 +1,11 @@
 import pymysql
+import datetime
 
 # On récupère les données des capteurs de l'arduino
 temperature = 20.0
 brightness = 100
 humidity = 50.0
-date = "2019-05-14"
+date = datetime.datetime.now()
 
 
 # Connexion à la BDD
