@@ -1,5 +1,4 @@
 import pymysql
-import bcrypt
 
 # On récupère les données des capteurs de l'arduino
 temperature = 20.0
