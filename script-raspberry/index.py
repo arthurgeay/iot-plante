@@ -4,6 +4,7 @@ import pymysql
 temperature = 20.0
 brightness = 100
 humidity = 50.0
+date = "2019-05-14"
 
 
 # Connexion à la BDD
@@ -18,8 +19,8 @@ connection = pymysql.connect(host='localhost',
 try:
     with connection.cursor() as cursor:
         # Créatuib de la requête
-        sql = "INSERT INTO `measures` (`temperature_measures`, `humidity_measures`, `brightness_measures`, `user_id`, `flower_id`) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(sql, (temperature, humidity, brightness, 1, 1))
+        sql = "INSERT INTO `measures` (`temperature_measures`, `humidity_measures`, `brightness_measures`, `user_id`, `flower_id`, `date_measures`) VALUES (%s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (temperature, humidity, brightness, 1, 1, date))
 
     connection.commit()
 finally:
