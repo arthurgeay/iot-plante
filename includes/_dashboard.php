@@ -20,7 +20,7 @@ $dateEnd = new DateTime($result['date_end_flower']);
             <p class="card-text <?=  ($result['humidity_measures'] >= $result['humidity_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Humidité</strong> : <?= $result['humidity_measures']; ?> %</p>
             <hr>
 
-            <p class="card-text">Description : <?= $result['description_flower']; ?></p>
+            <p class="card-text">Description : <?= htmlentities(nl2br($result['description_flower'])); ?></p>
             <p class="card-text">Catégorie : <?= $result['category_flower']; ?></p>
             <p>Date de floraison : entre <?= $dateStart->format('M') .' et '. $dateEnd->format('M') ?></p>
             <p><a href="index.php?page=dashboard&action=delete" class="btn btn-danger">Supprimer la plante</a></p>

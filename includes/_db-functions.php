@@ -21,6 +21,15 @@ function emailExist($email) {
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 
+function flowerExist($id) {
+    $db = dbConnect();
+    $req = $db->prepare('SELECT * FROM flower WHERE id_flower = :id');
+    $req->bindValue('id', $id);
+    $req->execute();
+
+    return $req->fetch(PDO::FETCH_ASSOC);
+}
+
 function addUser($email, $password) {
     $db = dbConnect();
     $req = $db->prepare('INSERT INTO user(email_user, password_user) VALUES(:email, :password)');
@@ -42,6 +51,20 @@ function deleteMeasures() {
     $req = $db->exec('DELETE FROM measures');
 
     return $req;
+}
+
+function getFlowers() {
+    $db = dbConnect();
+    $req = $db->query('SELECT id_flower, name_flower FROM flower');
+
+    $data = [];
+
+    while($result = $req->fetch(PDO::FETCH_ASSOC))
+    {
+        $data[] = $result;
+    }
+
+    return $data;
 }
 
 
