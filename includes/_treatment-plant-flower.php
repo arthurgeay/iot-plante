@@ -10,7 +10,7 @@ $flowers = getFlowers();
 if(isset($_POST['flower']) && !empty($_POST['flower'])) {
     if(flowerExist($_POST['flower'])) {
         $file = fopen('ressources/script-raspberry/data.txt', 'w');
-        fwrite($file, $_SESSION['id'].';'.$_POST['flower']);
+        fwrite($file, $_SESSION['id'].';'.$_POST['flower'].';'.$_SESSION['email']);
         fclose($file);
         $_SESSION['success'] = 'La plante a bien été ajouté. Vous pouvez dès à présent accéder à votre tableau de bord';
     } else {
