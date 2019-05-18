@@ -34,7 +34,7 @@ PHP | SQL | Python | C
  1. Cloner le projet `git clone https://github.com/arthurgeay/iot-plante.git`
  2. Installer un serveur web permettant d'exécuter du PHP. Le plus simple étant d'installer une plateforme LAMP (Apache, MySQL, PHP) sur sa machine : [WAMP](https://www.clubic.com/telecharger-fiche27009-wampserver.html) (windows) | [MAMP](https://www.mamp.info/en/) (Mac) | Linux (LAMP)
  3. Installer [Python](https://www.python.org/downloads/)
- 4. Créer une base de données depuis phpMyAdmin `CREATE DATABASE lenomdemabase` 
+ 4. Créer une base de données depuis phpMyAdmin `CREATE DATABASE iot-plante` 
  5. Importer le script SQL depuis phpMyAdmin pour créer les différentes tables nécessaires au bon fonctionnement du projet (`ressources/sql/iot-plante.sql`)
 
 
