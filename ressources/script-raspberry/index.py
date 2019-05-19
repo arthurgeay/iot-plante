@@ -4,13 +4,13 @@ import pymysql
 import datetime
 import time
 import smtplib
+import os
 
 # Dictionnaire qui stocke les dates d'envoi des alertes
 dateAlert = {}
 
-
 def sendMail(msg, dest):
-    file = open('email.txt', 'r')
+    file = open(os.path.dirname(os.path.abspath(__file__)) + '/email.txt', 'r')
     rows = file.read().split(';')
     gmail_user = rows[0]
     gmail_password = rows[1]
@@ -47,7 +47,7 @@ while(True):
 
 
     try:
-        fileData = open('data.txt', 'r')
+        fileData = open(os.path.dirname(os.path.abspath(__file__)) + '/data.txt', 'r')
         rows = fileData.read().split(';')
         user_id = rows[0]
         flower_id = rows[1]
