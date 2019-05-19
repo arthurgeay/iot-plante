@@ -14,6 +14,7 @@ def sendMail(msg, dest):
     rows = file.read().split(';')
     gmail_user = rows[0]
     gmail_password = rows[1]
+    file.close()
 
     sent_from = gmail_user
     to = [dest]
@@ -51,6 +52,7 @@ while(True):
         user_id = rows[0]
         flower_id = rows[1]
         user_email = rows[2]
+        file.close()
     except:
         user_id = None
         flower_id = None
