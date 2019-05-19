@@ -3,6 +3,9 @@ import datetime
 import time
 import smtplib
 
+# Dictionnaire qui stocke les dates d'envoi des alertes
+dateAlert = {}
+
 
 def sendMail(msg, dest):
     file = open('email.txt', 'r')
@@ -34,9 +37,9 @@ def sendMail(msg, dest):
 
 while(True):
     # On récupère les données des capteurs de l'arduino
-    temperature = 5
+    temperature = 5.0
     brightness = 100
-    humidity = 50.0
+    humidity = 50
     date = datetime.datetime.now()
 
 
@@ -58,24 +61,31 @@ while(True):
         # On ajoute les données à la bdd
         try:
             with connection.cursor() as cursor:
-                # Créatuib de la requête
+                # Création de la requête pour insérer les données de mesure
                 sql = "INSERT INTO `measures` (`temperature_measures`, `humidity_measures`, `brightness_measures`, `user_id`, `flower_id`, `date_measures`) VALUES (%s, %s, %s, %s, %s, %s)"
                 cursor.execute(sql, (temperature, humidity, brightness, user_id, flower_id, date))
 
+                # On récupère les données de mesures et on vérifie si elles sont correcte sinon on envoie une alerte
                 cursor.execute(
                     "SELECT * FROM measures AS m INNER JOIN flower AS f ON f.id_flower = m.flower_id ORDER BY m.date_measures DESC")
                 result = cursor.fetchone()
-                if(result['temperature_measures'] < 10.0 or result['temperature_measures'] > result['temperature_flower']):
+
+                if(('temperature' not in dateAlert or 'temperature' in dateAlert and dateAlert['temperature'] != date.date()) and (result['temperature_measures'] < 10.0 or result['temperature_measures'] > result['temperature_flower'])):
                     sendMail("La temperature est trop faible", user_email)
+                    dateAlert['temperature'] = date.date()
 
-                if(result['brightness_measures'] < result['brightness_flower']):
+                if(('brightness' not in dateAlert or 'brightness' in dateAlert and dateAlert['brightness'] != date.date()) and result['brightness_measures'] < result['brightness_flower']):
                     sendMail("La luminosite est trop faible", user_email)
+                    dateAlert['brightness'] = date.date()
 
-                if(result['humidity_measures'] < result['humidity_flower']):
+                if(('humidity' not in dateAlert or 'humidity' in dateAlert and dateAlert['humidity'] != date.date()) and result['humidity_measures'] < result['humidity_flower']):
                     sendMail("L'humidite est trop faible", user_email)
+                    dateAlert['humidity'] = date.date()
+
+                print(dateAlert)
 
             connection.commit()
         finally:
             connection.close()
-    time.sleep(60)
+    time.sleep(10)
 
