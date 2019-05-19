@@ -47,12 +47,12 @@ while(True):
 
 
     try:
-        file = open('data.txt', 'r')
-        rows = file.read().split(';')
+        fileData = open('data.txt', 'r')
+        rows = fileData.read().split(';')
         user_id = rows[0]
         flower_id = rows[1]
         user_email = rows[2]
-        file.close()
+        fileData.close()
     except:
         user_id = None
         flower_id = None
