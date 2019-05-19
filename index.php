@@ -18,6 +18,9 @@ switch($page) {
     case 'plant':
         require_once('includes/_treatment-plant-flower.php');
         break;
+    case 'add-plant':
+        require_once('includes/_treatment-add-flower.php');
+        break;
 
 }
 
@@ -50,6 +53,9 @@ switch($page) {
                     break;
                 case 'plant':
                     require_once('includes/_plant-flower.php');
+                    break;
+                case 'add-plant':
+                    require_once('includes/_add-flower.php');
                     break;
             }
         ?>

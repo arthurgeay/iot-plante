@@ -21,10 +21,17 @@ function emailExist($email) {
     return $req->fetch(PDO::FETCH_ASSOC);
 }
 
-function flowerExist($id) {
+function flowerExist($info) {
     $db = dbConnect();
-    $req = $db->prepare('SELECT * FROM flower WHERE id_flower = :id');
-    $req->bindValue('id', $id);
+
+    if(is_int($info)) {
+        $req = $db->prepare('SELECT * FROM flower WHERE id_flower = :id');
+        $req->bindValue('id', $info);
+    } else {
+        $req = $db->prepare('SELECT * FROM flower WHERE name_flower = :name');
+        $req->bindValue('name', $info);
+    }
+
     $req->execute();
 
     return $req->fetch(PDO::FETCH_ASSOC);
@@ -65,6 +72,22 @@ function getFlowers() {
     }
 
     return $data;
+}
+
+function addFlower($name, $humidity, $temperature, $brightness, $dateStart, $dateEnd, $category, $description, $picture) {
+    $db = dbConnect();
+    $req = $db->prepare('INSERT INTO flower(name_flower, category_flower, description_flower, picture_flower, humidity_flower, temperature_flower, brightness_flower, date_start_flower, date_end_flower) VALUES(:name, :category, :description, :picture, :humidity, :temperature, :brightness, :date_start, :date_end)');
+    $req->bindValue(':name', htmlentities($name));
+    $req->bindValue(':category', htmlentities($category));
+    $req->bindValue(':description', htmlentities($description));
+    $req->bindValue(':picture', htmlentities($picture));
+    $req->bindValue(':humidity', htmlentities($humidity));
+    $req->bindValue(':temperature', htmlentities($temperature));
+    $req->bindValue(':brightness', htmlentities($brightness));
+    $req->bindValue(':date_start', htmlentities($dateStart));
+    $req->bindValue(':date_end', htmlentities($dateEnd));
+
+    $req->execute();
 }
 
 

@@ -16,6 +16,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     deleteMeasures();
     unlink('ressources/script-raspberry/data.txt');
     header('Location: index.php?page=plant');
+    exit();
 }
 
 

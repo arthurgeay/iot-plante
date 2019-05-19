@@ -8,7 +8,8 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['password_hash']) || !isset($
 $flowers = getFlowers();
 
 if(isset($_POST['flower']) && !empty($_POST['flower'])) {
-    if(flowerExist($_POST['flower'])) {
+    $idFlower = (int) $_POST['flower'];
+    if(flowerExist($idFlower)) {
         $file = fopen('ressources/script-raspberry/data.txt', 'w');
         fwrite($file, $_SESSION['id'].';'.$_POST['flower'].';'.$_SESSION['email']);
         fclose($file);
