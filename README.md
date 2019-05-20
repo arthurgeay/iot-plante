@@ -26,16 +26,57 @@ PHP | SQL | Python | C
 
 ## Architecture du projet
 
-*A venir*
+L'architecture se décompose ainsi :
 
+ - Racine du projet : on retrouve le point d'entrée de l'application (index.php)
+ - Répertoire CSS : contient l'unique feuille de style du projet
+ - Répertoire Includes : contient toutes les portions de page et leur traitement en PHP. Le fichier db-functions contient toutes les fonctions permettant le 'requettage' des données
+ - Répertoire Ressources : contient les différents code sources à intégrés pour l'Arduino mais aussi le script python pour le Raspberry ainsi que le script SQL d'installation de la base de données
+ - Répertoire uploads  : répertoire qui contient les images de plante ajouté par l'utilisateur
+
+    ├── css
+    │   └── style.css
+    ├── includes
+    │   ├── _add-flower.php
+    │   ├── _connexion.php
+    │   ├── _dashboard.php
+    │   ├── _db-functions.php
+    │   ├── _nav.php
+    │   ├── _plant-flower.php
+    │   ├── _treatment-add-flower.php
+    │   ├── _treatment-dashboard.php
+    │   ├── _treatment-logout.php
+    │   ├── _treatment-log-register.php
+    │   └── _treatment-plant-flower.php
+    ├── index.php
+    ├── README.md
+    ├── ressources
+    │   ├── code-arduino
+    │   │   └── lecture_capteurs_dht11_LM393.ino
+    │   ├── script-raspberry
+    │   │   ├── email.txt
+    │   │   └── index.py
+    │   └── sql
+    │       └── iot-plante.sql
+    └── uploads
 
 ## Instructions d'installation
 
- 1. Cloner le projet `git clone https://github.com/arthurgeay/iot-plante.git`
- 2. Installer un serveur web permettant d'exécuter du PHP. Le plus simple étant d'installer une plateforme LAMP (Apache, MySQL, PHP) sur sa machine : [WAMP](https://www.clubic.com/telecharger-fiche27009-wampserver.html) (windows) | [MAMP](https://www.mamp.info/en/) (Mac) | Linux (LAMP)
- 3. Installer [Python](https://www.python.org/downloads/)
- 4. Créer une base de données depuis phpMyAdmin `CREATE DATABASE iot-plante` 
- 5. Importer le script SQL depuis phpMyAdmin pour créer les différentes tables nécessaires au bon fonctionnement du projet (`ressources/sql/iot-plante.sql`)
+ 1. Installer les différents éléments indispensables pour que le projet fonctionne sur la Raspberry : `sudo apt install php apache2 mysql-server phpmyadmin git python3 python3-pip postfix`
+ 2. Lors de la configuration de postfix, choisir l'option `Site internet` puis pour le nom de domaine : `iot-plante`
+ 3. Modifier le fichier de configuration de postfix : `sudo nano /etc/postfix/main.cf`et supprimer à la ligne mydestination iot.plante,
+ 4. Redémarrer postfix : `sudo service postfix restart`
+ 5. Vérifier que votre Fournisseur d'Accès à Internet ne bloque pas les envois de mail SMTP. Vous pouvez désactiver le blocage en vous rendant sur la console d'administration de votre box; (généralement l'adresse pour y accéder est 192.168.1.1) 
+ 6. Installer la librairie pymysql pour Python : `sudo pip3 install pymysql`
+ 7. Se rendre dans le répertoire /var/www : `cd /var/www` puis `git clone https://github.com/arthurgeay/iot-plante.git`
+ 8. Modifier la configuration du virtual host par défaut : `sudo nano /etc/apache2/sites-available/000-default.conf`
+ 9. Supprimer le /html à la ligne -> `documentRoot: var/www` puis enregistrer le fichier
+ 10. Activer le fichier de configuration modifié : `sudo a2ensite 000-default.conf` puis redémarrer apache `sudo service apache2 restart`
+ 11. Créer une base de données depuis phpMyAdmin `CREATE DATABASE lenomdemabase` 
+ 12. Importer le script SQL depuis phpMyAdmin pour créer les différentes tables nécessaires au bon fonctionnement du projet (`ressources/sql/iot-plante.sql`)
+ 13. Modifier le fichier profile : `sudo nano /etc/profile`et insérer ceci sur deux lignes séparées : `sudo python3 /var/www/iot-plante/ressources/script-raspberry/index.py` et `sudo service postfix start`
+ 14. Créer un fichier `email.txt`dans le répertoire `/var/www/iot-plante/ressources/script-raspberry` et insérer une adresse gmail et un mot de passe dans le fichier, sous la forme `adressemail;motdepasse`
+ 15. Modifier les droits du répertoire script-raspberry : `sudo chmod 777 /var/www/iot-plante/ressources/script-raspberry` et ceux du répertoire iot-plante : `sudo chmod 777 /var/www/iot-plante`
 
 
 **Première connexion à l'application** :
