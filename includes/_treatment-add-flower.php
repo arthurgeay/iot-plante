@@ -29,6 +29,10 @@ if(isset($_POST['name']) && isset($_POST['date_start']) && isset($_POST['date_en
                 if($_FILES['image']['size'] > 2000000) {
                     $_SESSION['errors'][] = 'Votre image est trop lourde, le système n\'acccèpte que les images de moins de 2 Mo';
                 } else {
+                    if(!file_exists('uploads/')) {
+                        mkdir('uploads');
+                    }
+
                     $pathFile = 'uploads/'.uniqid().'.'.$extension;
                     move_uploaded_file($_FILES['image']['tmp_name'], $pathFile);
                 }
