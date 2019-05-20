@@ -7,7 +7,6 @@ import smtplib
 import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import yagmail
 
 # Dictionnaire qui stocke les dates d'envoi des alertes
 dateAlert = {}
@@ -19,12 +18,7 @@ def sendMail(msg, dest):
     gmail_password = rows[1]
     file.close()
 
-    body = "Bonjour, notre systeme a detecte qu'un ou plusieurs des indicateurs captees pour la plante ne sont pas optimales :\n\n" + msg + "\n\n Connected Flowers"
-
-    yag = yagmail.SMTP(gmail_user, gmail_password)
-    yag.send(to=dest, subject='Alerte - Connected Flowers', contents=body, )
-
-    '''sent_from = gmail_user
+    sent_from = gmail_user
     send_to = dest
     subject = 'Alerte - Connected Flowers'
     body = "Bonjour, notre systeme a detecte qu'un ou plusieurs des indicateurs captees pour la plante ne sont pas optimales :\n\n" + msg + "\n\n Connected Flowers"
@@ -46,7 +40,7 @@ def sendMail(msg, dest):
         print('Email sent!')
     except:
         print('Something went wrong...')
-    '''
+
 
 
 
