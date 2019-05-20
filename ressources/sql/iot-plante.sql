@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Sam 18 Mai 2019 à 19:21
+-- Généré le :  Mar 21 Mai 2019 à 01:01
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.1
 
@@ -35,7 +35,6 @@ CREATE TABLE `flower` (
   `humidity_flower` float DEFAULT NULL,
   `temperature_flower` float DEFAULT NULL,
   `brightness_flower` float DEFAULT NULL,
-  `flowering_period` varchar(51) DEFAULT NULL,
   `date_start_flower` date NOT NULL,
   `date_end_flower` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -44,12 +43,12 @@ CREATE TABLE `flower` (
 -- Contenu de la table `flower`
 --
 
-INSERT INTO `flower` (`id_flower`, `name_flower`, `category_flower`, `description_flower`, `picture_flower`, `humidity_flower`, `temperature_flower`, `brightness_flower`, `flowering_period`, `date_start_flower`, `date_end_flower`) VALUES
-(1, 'Capucines', 'Tropaeolaceae', '→ plante grimpante annuelle\r\n→ vertus médicinales dans de très nombreux \r\n→ traitements homéopathiques\r\n→ fleurs vivement colorées : jaune, orange et rouge\r\n→ Luttent contre les pucerons', 'https://api.tela-botanica.org/img:000243652L.jpg', 50, 20, 100, 'Juin à Septembre', '2019-06-01', '2019-09-30'),
-(2, 'Muguet', 'Solanaceae', '→ fleurs sont toutes disposées en grappe (20 clochettes maximum par brin)\r\n→ tige de 15 à 25 cm\r\n→ fleurs blanche\\n', 'https://api.tela-botanica.org/img:000092046L.jpg', 80, 18, 100, 'Avril à mai', '2019-04-01', '2019-05-31'),
-(3, 'Hortensia', 'Hydrangeaceae', '→ Plante de 1 à 2 mètres de hauteur\r\n→ Les fleurs fertiles sont situés au centre et celle stériles sur la périphéries', 'https://api.tela-botanica.org/img:001911140L.jpg', 65, 15, 100, 'Juin - Octobre', '2019-06-01', '2019-10-31'),
-(4, 'Lila', 'Apiaceae', '→ Plante de 2 à 5mètres\r\n→ Feuilles ovales\r\n→ Fleurs violette ou roses avec de l\'odeur', '', 50, 16, 100, 'Avril à Juin', '2019-04-01', '2019-06-30'),
-(5, 'Pensée sauvage', 'Violaceae', '→ Plante de 30 cm \r\n→ Aussi nomée violette des champs', 'https://api.tela-botanica.org/img:000204501L.jpg', 65, 17, 100, 'Mars à Juillet', '2019-03-01', '2019-07-31');
+INSERT INTO `flower` (`id_flower`, `name_flower`, `category_flower`, `description_flower`, `picture_flower`, `humidity_flower`, `temperature_flower`, `brightness_flower`, `date_start_flower`, `date_end_flower`) VALUES
+(1, 'Capucines', 'Tropaeolaceae', '→ plante grimpante annuelle\r\n→ vertus médicinales dans de très nombreux \r\n→ traitements homéopathiques\r\n→ fleurs vivement colorées : jaune, orange et rouge\r\n→ Luttent contre les pucerons', 'https://api.tela-botanica.org/img:000243652L.jpg', 50, 20, 100, '2019-06-01', '2019-09-30'),
+(2, 'Muguet', 'Solanaceae', '→ fleurs sont toutes disposées en grappe (20 clochettes maximum par brin)\r\n→ tige de 15 à 25 cm\r\n→ fleurs blanche\\n', 'https://api.tela-botanica.org/img:000092046L.jpg', 80, 18, 100, '2019-04-01', '2019-05-31'),
+(3, 'Hortensia', 'Hydrangeaceae', '→ Plante de 1 à 2 mètres de hauteur\r\n→ Les fleurs fertiles sont situés au centre et celle stériles sur la périphéries', 'https://api.tela-botanica.org/img:001911140L.jpg', 65, 15, 100, '2019-06-01', '2019-10-31'),
+(4, 'Lila', 'Apiaceae', '→ Plante de 2 à 5mètres\r\n→ Feuilles ovales\r\n→ Fleurs violette ou roses avec de l\'odeur', '', 50, 16, 100, '2019-04-01', '2019-06-30'),
+(5, 'Pensée sauvage', 'Violaceae', '→ Plante de 30 cm \r\n→ Aussi nomée violette des champs', 'https://api.tela-botanica.org/img:000204501L.jpg', 65, 17, 100, '2019-03-01', '2019-07-31');
 
 -- --------------------------------------------------------
 
@@ -111,17 +110,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `flower`
 --
 ALTER TABLE `flower`
-  MODIFY `id_flower` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_flower` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `measures`
 --
 ALTER TABLE `measures`
-  MODIFY `id_measures` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_measures` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- Contraintes pour les tables exportées
 --
