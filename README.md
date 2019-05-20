@@ -34,8 +34,8 @@ L'architecture se décompose ainsi :
  - Répertoire Ressources : contient les différents code sources à intégrés pour l'Arduino mais aussi le script python pour le Raspberry ainsi que le script SQL d'installation de la base de données
  - Répertoire uploads  : répertoire qui contient les images de plante ajouté par l'utilisateur
 
-   
 
+```
     .
     ├── css
     │   └── style.css
@@ -62,6 +62,9 @@ L'architecture se décompose ainsi :
     │   └── sql
     │       └── iot-plante.sql
     └── uploads
+```
+
+   
 
 ## Instructions d'installation
 
