@@ -18,17 +18,16 @@ def sendMail(msg, dest):
 
     sent_from = gmail_user
     to = [dest]
-    subject = 'Alerte - Connected Flowers'
+    subject = 'Alerte - Connected Flowers \n {}'
     body = "Bonjour, notre systeme a detecte qu'un ou plusieurs des indicateurs captees pour la plante ne sont pas optimales :\n\n" + msg + "\n\n Connected Flowers"
 
-    email_text = """From: %s\nTo: %s\nSubject: %s\n\n%s
-        """ % (sent_from, ", ".join(to), subject, body)
+
 
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(gmail_user, gmail_password)
-        server.sendmail(sent_from, to, email_text)
+        server.sendmail(sent_from, to, subject.format(body))
         server.close()
 
         print('Email sent!')
