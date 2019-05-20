@@ -56,6 +56,7 @@ while(True):
     except:
         user_id = None
         flower_id = None
+        user_email = None
 
     if(user_id != None and flower_id != None):
         # Connexion à la BDD
@@ -75,15 +76,18 @@ while(True):
                 result = cursor.fetchone()
 
                 if(('temperature' not in dateAlert or 'temperature' in dateAlert and dateAlert['temperature'] != date.date()) and (result['temperature_measures'] < 10.0 or result['temperature_measures'] > result['temperature_flower'])):
-                    sendMail("La temperature est trop faible. La temperature ideale est comprise entre 10 degre et " + str(result['temperature_flower']) + " degre", user_email)
+                    message = "La temperature est trop faible. La temperature ideale est comprise entre 10 degre et " + str(result['temperature_flower']) + " degre"
+                    sendMail(message, user_email)
                     dateAlert['temperature'] = date.date()
 
                 if(('brightness' not in dateAlert or 'brightness' in dateAlert and dateAlert['brightness'] != date.date()) and result['brightness_measures'] < result['brightness_flower']):
-                    sendMail("La luminosite est trop faible. La luminosite optimale ne doit pas etre en dessous de  " + str(result['brightness_flower']) + " pourcent", user_email)
+                    message = "La luminosite est trop faible. La luminosite optimale ne doit pas etre en dessous de  " + str(result['brightness_flower']) + " pourcent"
+                    sendMail(message, user_email)
                     dateAlert['brightness'] = date.date()
 
                 if(('humidity' not in dateAlert or 'humidity' in dateAlert and dateAlert['humidity'] != date.date()) and result['humidity_measures'] < result['humidity_flower']):
-                    sendMail("L'humidite est trop faible. L'humidite optimale doit etre de " + str(result['humidity_flower']) + " pourcent", user_email)
+                    message = "L'humidite est trop faible. L'humidite optimale doit etre de " + str(result['humidity_flower']) + " pourcent"
+                    sendMail(message, user_email)
                     dateAlert['humidity'] = date.date()
 
                 print(dateAlert)
