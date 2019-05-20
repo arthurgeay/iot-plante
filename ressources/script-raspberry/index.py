@@ -5,6 +5,8 @@ import datetime
 import time
 import smtplib
 import os
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Dictionnaire qui stocke les dates d'envoi des alertes
 dateAlert = {}
@@ -17,18 +19,23 @@ def sendMail(msg, dest):
     file.close()
 
     sent_from = gmail_user
-    to = [dest]
-    subject = 'Alerte - Connected Flowers \n {}'
+    send_to = dest
+    subject = 'Alerte - Connected Flowers'
     body = "Bonjour, notre systeme a detecte qu'un ou plusieurs des indicateurs captees pour la plante ne sont pas optimales :\n\n" + msg + "\n\n Connected Flowers"
 
+    msg = MIMEMultipart()
+    msg['From'] = sent_from
+    msg['To'] = send_to
+    msg['Subject'] = subject
 
+    msg.attach(MIMEText(body, 'plain'))
 
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(gmail_user, gmail_password)
-        server.sendmail(sent_from, to, subject.format(body))
-        server.close()
+        server.sendmail(sent_from, send_to, msg.as_string())
+        server.quit()
 
         print('Email sent!')
     except:
