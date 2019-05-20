@@ -70,7 +70,7 @@ L'architecture se décompose ainsi :
 
  1. Installer les différents éléments indispensables pour que le projet fonctionne sur la Raspberry : `sudo apt install php apache2 mysql-server phpmyadmin git python3 python3-pip postfix`
  2. Lors de la configuration de postfix, choisir l'option `Site internet` puis pour le nom de domaine : `iot-plante`
- 3. Modifier le fichier de configuration de postfix : `sudo nano /etc/postfix/main.cf`et supprimer à la ligne mydestination iot.plante,
+ 3. Modifier le fichier de configuration de postfix : `sudo nano /etc/postfix/main.cf`et supprimer à la ligne mydestination iot.plante, | Modifier la ligne inet-interfaces = all par inet-interfaces = loopback-only 
  4. Redémarrer postfix : `sudo service postfix restart`
  5. Vérifier que votre Fournisseur d'Accès à Internet ne bloque pas les envois de mail SMTP. Vous pouvez désactiver le blocage en vous rendant sur la console d'administration de votre box; (généralement l'adresse pour y accéder est 192.168.1.1) 
  6. Installer la librairie pymysql pour Python : `sudo pip3 install pymysql`
