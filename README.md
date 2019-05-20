@@ -36,33 +36,32 @@ L'architecture se décompose ainsi :
 
    
 
- 
-
+    .
     ├── css
-        │   └── style.css
-        ├── includes
-        │   ├── _add-flower.php
-        │   ├── _connexion.php
-        │   ├── _dashboard.php
-        │   ├── _db-functions.php
-        │   ├── _nav.php
-        │   ├── _plant-flower.php
-        │   ├── _treatment-add-flower.php
-        │   ├── _treatment-dashboard.php
-        │   ├── _treatment-logout.php
-        │   ├── _treatment-log-register.php
-        │   └── _treatment-plant-flower.php
-        ├── index.php
-        ├── README.md
-        ├── ressources
-        │   ├── code-arduino
-        │   │   └── lecture_capteurs_dht11_LM393.ino
-        │   ├── script-raspberry
-        │   │   ├── email.txt
-        │   │   └── index.py
-        │   └── sql
-        │       └── iot-plante.sql
-        └── uploads
+    │   └── style.css
+    ├── includes
+    │   ├── _add-flower.php
+    │   ├── _connexion.php
+    │   ├── _dashboard.php
+    │   ├── _db-functions.php
+    │   ├── _nav.php
+    │   ├── _plant-flower.php
+    │   ├── _treatment-add-flower.php
+    │   ├── _treatment-dashboard.php
+    │   ├── _treatment-logout.php
+    │   ├── _treatment-log-register.php
+    │   └── _treatment-plant-flower.php
+    ├── index.php
+    ├── README.md
+    ├── ressources
+    │   ├── code-arduino
+    │   │   └── lecture_capteurs_dht11_LM393.ino
+    │   ├── script-raspberry
+    │   │   ├── email.txt
+    │   │   └── index.py
+    │   └── sql
+    │       └── iot-plante.sql
+    └── uploads
 
 ## Instructions d'installation
 
