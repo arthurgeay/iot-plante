@@ -16,9 +16,9 @@ $dateMeasures = new DateTime(($result['date_measures']));
             <h5 class="card-title"><?= $result['name_flower']; ?></h5>
             <hr>
             <p><strong>Données récoltées le <?= $dateMeasures->format('d/m/Y à H:i:s'); ?></strong></p>
-            <p class="card-text <?=  ($result['temperature_measures'] >= 10 && $result['temperature_measures'] <= $result['temperature_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Température</strong> : <?= $result['temperature_measures']; ?> °C</p>
-            <p class="card-text <?=  ($result['brightness_measures'] >= $result['brightness_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Luminosité</strong> : <?= $result['brightness_measures']; ?> %</p>
-            <p class="card-text <?=  ($result['humidity_measures'] >= $result['humidity_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Humidité</strong> : <?= $result['humidity_measures']; ?> %</p>
+            <p data-toggle="tooltip" data-placement="left" title="La température optimale est comprise entre 10°C et <?= $result['temperature_flower']; ?>°C" class="card-text <?=  ($result['temperature_measures'] >= 10 && $result['temperature_measures'] <= $result['temperature_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Température</strong> : <?= $result['temperature_measures']; ?> °C</p>
+            <p data-toggle="tooltip" data-placement="left" title="La luminosité optimale ne doit pas être en dessous de <?= $result['brightness_flower']; ?>%" class="card-text <?=  ($result['brightness_measures'] >= $result['brightness_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Luminosité</strong> : <?= $result['brightness_measures']; ?> %</p>
+            <p data-toggle="tooltip" data-placement="left" title="L'humidité optimale doit être de <?= $result['humidity_flower']; ?>%" class="card-text <?=  ($result['humidity_measures'] >= $result['humidity_flower']) ? 'text-success' : 'text-danger' ?>"><strong>Humidité</strong> : <?= $result['humidity_measures']; ?> %</p>
             <hr>
 
             <p class="card-text">Description : <strong><?= nl2br($result['description_flower']); ?></strong></p>
