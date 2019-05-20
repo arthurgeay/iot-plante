@@ -76,7 +76,7 @@ while(True):
                 result = cursor.fetchone()
 
                 if(('temperature' not in dateAlert or 'temperature' in dateAlert and dateAlert['temperature'] != date.date()) and (result['temperature_measures'] < 10.0 or result['temperature_measures'] > result['temperature_flower'])):
-                    message = "La temperature est trop faible. La temperature ideale est comprise entre 10 degre et " + str(result['temperature_flower']) + " degre"
+                    message = "La temperature est trop faible"
                     sendMail(message, user_email)
                     dateAlert['temperature'] = date.date()
 
