@@ -34,31 +34,35 @@ L'architecture se décompose ainsi :
  - Répertoire Ressources : contient les différents code sources à intégrés pour l'Arduino mais aussi le script python pour le Raspberry ainsi que le script SQL d'installation de la base de données
  - Répertoire uploads  : répertoire qui contient les images de plante ajouté par l'utilisateur
 
+   
+
+ 
+
     ├── css
-    │   └── style.css
-    ├── includes
-    │   ├── _add-flower.php
-    │   ├── _connexion.php
-    │   ├── _dashboard.php
-    │   ├── _db-functions.php
-    │   ├── _nav.php
-    │   ├── _plant-flower.php
-    │   ├── _treatment-add-flower.php
-    │   ├── _treatment-dashboard.php
-    │   ├── _treatment-logout.php
-    │   ├── _treatment-log-register.php
-    │   └── _treatment-plant-flower.php
-    ├── index.php
-    ├── README.md
-    ├── ressources
-    │   ├── code-arduino
-    │   │   └── lecture_capteurs_dht11_LM393.ino
-    │   ├── script-raspberry
-    │   │   ├── email.txt
-    │   │   └── index.py
-    │   └── sql
-    │       └── iot-plante.sql
-    └── uploads
+        │   └── style.css
+        ├── includes
+        │   ├── _add-flower.php
+        │   ├── _connexion.php
+        │   ├── _dashboard.php
+        │   ├── _db-functions.php
+        │   ├── _nav.php
+        │   ├── _plant-flower.php
+        │   ├── _treatment-add-flower.php
+        │   ├── _treatment-dashboard.php
+        │   ├── _treatment-logout.php
+        │   ├── _treatment-log-register.php
+        │   └── _treatment-plant-flower.php
+        ├── index.php
+        ├── README.md
+        ├── ressources
+        │   ├── code-arduino
+        │   │   └── lecture_capteurs_dht11_LM393.ino
+        │   ├── script-raspberry
+        │   │   ├── email.txt
+        │   │   └── index.py
+        │   └── sql
+        │       └── iot-plante.sql
+        └── uploads
 
 ## Instructions d'installation
 
