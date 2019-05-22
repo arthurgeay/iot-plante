@@ -80,7 +80,7 @@ L'architecture se décompose ainsi :
  10. Activer le fichier de configuration modifié : `sudo a2ensite 000-default.conf` puis redémarrer apache `sudo service apache2 restart`
  11. Créer une base de données depuis phpMyAdmin `CREATE DATABASE lenomdemabase` 
  12. Importer le script SQL depuis phpMyAdmin pour créer les différentes tables nécessaires au bon fonctionnement du projet (`ressources/sql/iot-plante.sql`)
- 13. Modifier le fichier profile : `sudo nano /etc/profile`et insérer ceci sur deux lignes séparées : `sudo python3 /var/www/iot-plante/ressources/script-raspberry/index.py` et `sudo service postfix start`
+ 13. Modifier le fichier rc.local : `sudo nano /etc/rc.local`et insérer ceci sur deux lignes séparées (juste avant le exit 0) : `sudo service postfix start` et `sudo python3 /var/www/iot-plante/ressources/script-raspberry/index.py &` 
  14. Créer un fichier `email.txt`dans le répertoire `/var/www/iot-plante/ressources/script-raspberry` et insérer une adresse gmail et un mot de passe dans le fichier, sous la forme `adressemail;motdepasse`
  15. Modifier les droits du répertoire script-raspberry : `sudo chmod 777 /var/www/iot-plante/ressources/script-raspberry` et ceux du répertoire iot-plante : `sudo chmod 777 /var/www/iot-plante`
 
