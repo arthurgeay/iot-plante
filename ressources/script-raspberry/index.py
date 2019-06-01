@@ -12,6 +12,7 @@ from email.mime.multipart import MIMEMultipart
 dateAlert = {}
 
 def sendMail(msg, dest):
+    # Ouverture du fichier qui stocke les identifiant de connexion mail
     file = open(os.path.dirname(os.path.abspath(__file__)) + '/email.txt', 'r')
     rows = file.read().split(';')
     gmail_user = rows[0]
@@ -30,6 +31,7 @@ def sendMail(msg, dest):
 
     msg.attach(MIMEText(body, 'plain'))
 
+    # Ouverture du fichier de log
     log = open(os.path.dirname(os.path.abspath(__file__)) + '/logs.txt', 'a')
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
@@ -38,9 +40,9 @@ def sendMail(msg, dest):
         server.sendmail(sent_from, send_to, msg.as_string())
         server.quit()
 
-        log.write(str(datetime.datetime.now()) + ': Email sent!')
+        log.write(str(datetime.datetime.now()) + ': Email sent! \n')
     except:
-        log.write(str(datetime.datetime.now()) + ': Something went wrong...')
+        log.write(str(datetime.datetime.now()) + ': Something went wrong... \n')
     log.close()
 
 
