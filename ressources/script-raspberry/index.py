@@ -30,6 +30,7 @@ def sendMail(msg, dest):
 
     msg.attach(MIMEText(body, 'plain'))
 
+    log = open(os.path.dirname(os.path.abspath(__file__)) + '/logs.txt', 'a')
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
@@ -37,10 +38,10 @@ def sendMail(msg, dest):
         server.sendmail(sent_from, send_to, msg.as_string())
         server.quit()
 
-        print('Email sent!')
+        log.write(str(datetime.datetime.now()) + ': Email sent!')
     except:
-        print('Something went wrong...')
-
+        log.write(str(datetime.datetime.now()) + ': Something went wrong...')
+    log.close()
 
 
 
