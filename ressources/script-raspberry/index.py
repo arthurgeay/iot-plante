@@ -84,23 +84,28 @@ while(True):
                     "SELECT * FROM measures AS m INNER JOIN flower AS f ON f.id_flower = m.flower_id ORDER BY m.date_measures DESC")
                 result = cursor.fetchone()
 
-                if(dateAlert['flower_id'] != result['flower_id']):
-                    if((dateAlert['flower_id'] != result['flower_id'] or dateAlert['temperature'] != date.date()) and (result['temperature_measures'] < 10.0 or result['temperature_measures'] > result['temperature_flower'])):
-                        message = "La temperature est trop faible. La temperature ideale est comprise entre 10 degre et " + str(result['temperature_flower']) + " degre"
-                        sendMail(message, user_email)
-                        dateAlert['temperature'] = date.date()
+                if ((dateAlert['flower_id'] != result['flower_id'] or dateAlert['temperature'] != date.date()) and (
+                        result['temperature_measures'] < 10.0 or result['temperature_measures'] > result[
+                    'temperature_flower'])):
+                    message = "La temperature est trop faible. La temperature ideale est comprise entre 10 degre et " + str(
+                        result['temperature_flower']) + " degre"
+                    sendMail(message, user_email)
+                    dateAlert['temperature'] = date.date()
 
-                    if((dateAlert['flower_id'] != result['flower_id'] or dateAlert['brightness'] != date.date()) and result['brightness_measures'] < result['brightness_flower']):
-                        message = "La luminosite est trop faible. La luminosite optimale ne doit pas etre en dessous de  " + str(result['brightness_flower']) + " pourcent"
-                        sendMail(message, user_email)
-                        dateAlert['brightness'] = date.date()
+                if ((dateAlert['flower_id'] != result['flower_id'] or dateAlert['brightness'] != date.date()) and
+                        result['brightness_measures'] < result['brightness_flower']):
+                    message = "La luminosite est trop faible. La luminosite optimale ne doit pas etre en dessous de  " + str(
+                        result['brightness_flower']) + " pourcent"
+                    sendMail(message, user_email)
+                    dateAlert['brightness'] = date.date()
 
-                    if(dateAlert['flower_id'] != result['flower_id'] or dateAlert['humidity'] != date.date() and result['humidity_measures'] < result['humidity_flower']):
-                        message = "L'humidite est trop faible. L'humidite optimale doit etre de " + str(result['humidity_flower']) + " pourcent"
-                        sendMail(message, user_email)
-                        dateAlert['humidity'] = date.date()
+                if ((dateAlert['flower_id'] != result['flower_id'] or dateAlert['humidity'] != date.date()) and result['humidity_measures'] < result['humidity_flower']):
+                    message = "L'humidite est trop faible. L'humidite optimale doit etre de " + str(
+                        result['humidity_flower']) + " pourcent"
+                    sendMail(message, user_email)
+                    dateAlert['humidity'] = date.date()
 
-                    dateAlert['flower_id'] = result['flower_id']
+                dateAlert['flower_id'] = result['flower_id']
 
                 print(dateAlert)
 
