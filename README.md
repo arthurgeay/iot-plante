@@ -37,31 +37,32 @@ L'architecture se décompose ainsi :
 
 ```
     .
-    ├── css
-    │   └── style.css
-    ├── includes
-    │   ├── _add-flower.php
-    │   ├── _connexion.php
-    │   ├── _dashboard.php
-    │   ├── _db-functions.php
-    │   ├── _nav.php
-    │   ├── _plant-flower.php
-    │   ├── _treatment-add-flower.php
-    │   ├── _treatment-dashboard.php
-    │   ├── _treatment-logout.php
-    │   ├── _treatment-log-register.php
-    │   └── _treatment-plant-flower.php
-    ├── index.php
     ├── README.md
-    ├── ressources
-    │   ├── code-arduino
-    │   │   └── lecture_capteurs_dht11_LM393.ino
-    │   ├── script-raspberry
-    │   │   ├── email.txt
-    │   │   └── index.py
-    │   └── sql
-    │       └── iot-plante.sql
-    └── uploads
+    ├── css
+    │   └── style.css
+    ├── includes
+    │   ├── _add-flower.php
+    │   ├── _connexion.php
+    │   ├── _dashboard.php
+    │   ├── _db-functions.php
+    │   ├── _nav.php
+    │   ├── _plant-flower.php
+    │   ├── _treatment-add-flower.php
+    │   ├── _treatment-dashboard.php
+    │   ├── _treatment-log-register.php
+    │   ├── _treatment-logout.php
+    │   └── _treatment-plant-flower.php
+    ├── index.php
+    └── ressources
+        ├── code-arduino
+        │   └── lecture_capteurs_dht11_LM393.ino
+        ├── script-raspberry
+        │   ├── data.txt
+        │   ├── email.txt
+        │   ├── index.py
+        │   └── logs.txt
+        └── sql
+            └── iot-plante.sql
 ```
 
    
@@ -78,7 +79,7 @@ L'architecture se décompose ainsi :
  8. Modifier la configuration du virtual host par défaut : `sudo nano /etc/apache2/sites-available/000-default.conf`
  9. Supprimer le /html à la ligne -> `documentRoot: var/www` puis enregistrer le fichier
  10. Activer le fichier de configuration modifié : `sudo a2ensite 000-default.conf` puis redémarrer apache `sudo service apache2 restart`
- 11. Créer une base de données depuis phpMyAdmin `CREATE DATABASE lenomdemabase` 
+ 11. Créer une base de données depuis phpMyAdmin `CREATE DATABASE iot-plante` 
  12. Importer le script SQL depuis phpMyAdmin pour créer les différentes tables nécessaires au bon fonctionnement du projet (`ressources/sql/iot-plante.sql`)
  13. Modifier le fichier rc.local : `sudo nano /etc/rc.local`et insérer ceci sur deux lignes séparées (juste avant le exit 0) : `sudo service postfix start` et `sudo python3 /var/www/iot-plante/ressources/script-raspberry/index.py &` 
  14. Créer un fichier `email.txt`dans le répertoire `/var/www/iot-plante/ressources/script-raspberry` et insérer une adresse gmail et un mot de passe dans le fichier, sous la forme `adressemail;motdepasse`
